@@ -1,0 +1,25 @@
+# docker-compose.yml for the MyGroceries Bot
+
+version: '3.8'
+
+services:
+  # Define the service for our bot application
+  groceries-bot:
+    build: .
+    container_name: groceries-bot-container
+    # Add the 'ports' section to expose the container's port
+    ports:
+      # Maps port 8080 on your local machine to port 80 inside the container
+      # Uvicorn is running on port 80 inside the container (see Dockerfile CMD)
+      - "8080:80"
+    volumes:
+      # Links the './data' folder on your host machine to the '/app/data' folder inside the container
+      - ./data:/app/data
+    env_file:
+      # Loads environment variables (like your TELEGRAM_TOKEN) from the .env file
+      - .env
+    restart: unless-stopped
+
+volumes:
+  # Defines the volume to ensure your database file persists
+  data:

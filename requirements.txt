@@ -1,0 +1,13 @@
+openai
+dotenv
+pydub
+fastapi
+telegram
+python-dotenv
+python-telegram-bot
+uvicorn[standard]
+google-cloud-storage
+google-cloud-speech
+google-generativeai
+google-auth
+Pillow
